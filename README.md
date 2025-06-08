@@ -112,7 +112,7 @@ No build step needed — it’s pure HTML/JS.
 
 ## 🧑‍💻 Author
 
-**Your Name**  
+**MPHO SHABALALA**  
 Made with ❤️ and JavaScript.
 
 ---
