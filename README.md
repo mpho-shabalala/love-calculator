@@ -20,7 +20,7 @@ A fun web app that calculates a "love compatibility" percentage between two name
 -second demonstration(calculation process)
 ![screenshot-placeholder](./resources/demo_2.png)
 
--first demonstration(results)
+-last demonstration(results)
 ![screenshot-placeholder](./resources/demo_3.png)
 
 ---
