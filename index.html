@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Love Test Calculator | home</title>
+</head>
+<body id="calculator-body">
+   <section id="calculator-form-section">
+    <form action="submit" id="calulator-form">
+        <div>
+         <input type="text" name="firstPlayerName" value="" required placeholder="Enter player one's name" >
+         <p class="input-validator-message" id='first-player-error-message'></p>
+        </div>
+         <div>
+             <input type="text" name="secondPlayerName" value="" required placeholder="Enter player two's name">
+             <p class="input-validator-message" id='second-player-error-message'></p>
+         </div>
+         <button id="calculator-form-btn">SUBMIT</button>
+     </form>
+     <div id="results-steps">
+         <p id="combined-names"></p>
+         <ul id="calculator-steps-layout"></ul>
+     </div>
+   </section>
+</body>
+<script src="Calculator.js"></script>
+</html>
