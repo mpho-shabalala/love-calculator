@@ -114,7 +114,7 @@ class Calculator{
         if(newList.length == 2){
             this.countElementsUIUpdate(newList, calculatorDisplayListHolderID);
             //update UI for end of game status
-            this.endGameResultsUIUpdate(newList, bodyID,firstPlayerName, secondPlayerName )
+            this.endGameResultsUIUpdate(newList, bodyID,firstPlayerName, secondPlayerName );
         }else if(newList.length > 2){
             const TIMEOUT = 2000;
             setTimeout(() => {
@@ -275,7 +275,23 @@ class Calculator{
      * @returns firstPlayerName and secondPlayerName joined by nameJoiner string
      */
     combineNamesWithNameJoiner(firstPlayerName, secondPlayerName, nameJoiner){
-        const playerNamesList = [firstPlayerName, secondPlayerName];
+
+         if (
+        typeof firstPlayerName !== 'string' || 
+        typeof secondPlayerName !== 'string' || 
+        !firstPlayerName.trim() || 
+        !secondPlayerName.trim()
+    ) {
+        throw new Error('Please enter valid names');
+    }
+        //test bad non alphabet characters
+        const invalidCharsRegex = /[^a-zA-Z\s'-]/;
+        if (invalidCharsRegex.test(firstPlayerName) || invalidCharsRegex.test(secondPlayerName))
+        throw new Error('Names can only contain letters');
+
+        //check for empty string(s)
+        if(firstPlayerName === '' || secondPlayerName === '') throw new Error('Please enter valid names');
+        const playerNamesList = [firstPlayerName.trim(), secondPlayerName.trim()];
         return playerNamesList.join(nameJoiner);
     }
 
@@ -361,7 +377,7 @@ class Calculator{
         let characterCountList = [];
         //iterate through each character
         for(let index = 0; index < combinedNamesArray.length; index++){
-            const currentCharacter = combinedNamesArray[index];
+            const currentCharacter = combinedNamesArray[index].toLowerCase();
             const currentCharacterCountExpression = new RegExp(currentCharacter, 'gmi');
             const characterCount = combinedNamesArray.match(currentCharacterCountExpression).length;
             const characterCountObj = {character : currentCharacter, count : characterCount }
@@ -370,6 +386,7 @@ class Calculator{
                 characterCountList.push(characterCountObj)
             }
         }
+        console.log(characterCountList)
         return characterCountList;
     }
 
@@ -462,7 +479,7 @@ class Calculator{
 
     //ALGORITHMS
     /**
-     * linear search algorithm
+     * linear search algorithm, built-in .some method would be more efficient
      * @param {character} character a character to be searched
      * @param {array} combinedNamesList list to search characters from
      * @returns true or false
@@ -475,18 +492,17 @@ class Calculator{
     }
 
     // New Functions not yet used
-    getFormData(form){
-        if(arguments.length < 2) throw new Error('No input name is specified');
-        console.log(form)
-        let valuesList = [];
-        const formData = new FormData(form);
-        for(let index = 1; index < arguments.length; index++){
-            const inputName = arguments[index];
-            const output = formData.get(inputName);
-            valuesList.push(output);
-        }
-        console.log(valuesList);
-    }
+    // getFormData(form){
+    //     if(arguments.length < 2) throw new Error('No input name is specified');
+    //     let valuesList = [];
+    //     const formData = new FormData(form);
+    //     for(let index = 1; index < arguments.length; index++){
+    //         const inputName = arguments[index];
+    //         const output = formData.get(inputName);
+    //         valuesList.push(output);
+    //     }
+    //     console.log(valuesList);
+    // }
 }
 
 new Calculator('calculator-body',
@@ -495,5 +511,7 @@ new Calculator('calculator-body',
                'second-player-error-message',
                'combined-names',
                'calculator-steps-layout');
+
+               export default Calculator;
 
 
