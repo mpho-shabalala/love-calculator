@@ -71,7 +71,7 @@ The logic is modularized for future testing. You can export and test core functi
 calculateLovePercentage("John", "Jane"); // returns "76"
 ```
 
-Unit testing with tools like **Jest** is recommended for function validation.
+Unit testing with tools like **Jest, and vitest** is recommended for function validation.
 
 ---
 
