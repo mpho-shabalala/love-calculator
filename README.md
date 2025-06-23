@@ -69,6 +69,7 @@ The logic is modularized for future testing. You can export and test core functi
 
 ```js
 calculateLovePercentage("John", "Jane"); // returns "76"
+and other logic heavy functions are tested using vitest
 ```
 
 Unit testing with tools like **Jest, and vitest** is recommended for function validation.
@@ -81,7 +82,9 @@ Unit testing with tools like **Jest, and vitest** is recommended for function va
 📁 love-calculator/
 ├── index.html
 ├── style.css
-├── app.js
+├── Calculator.js
+├── 📁tests/
+    ├── calculator.test.js
 └── README.md
 ```
 
